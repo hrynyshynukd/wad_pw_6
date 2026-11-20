@@ -1,0 +1,159 @@
+/* ==========================================================
+   ARTBOARD Design Tokens — Practical Work №6
+   Three levels: Primitive → Semantic → Component
+   ========================================================== */
+
+/* Level 1 — Primitive Tokens: raw palette and numeric scales */
+:root {
+  --primitive-cream-50: #fbf9f5;
+  --primitive-cream-100: #f8f5ef;
+  --primitive-cream-200: #f0ebe3;
+  --primitive-cream-300: #e8e1d8;
+  --primitive-cream-400: #dfd5ca;
+  --primitive-stone-500: #827c73;
+  --primitive-charcoal-700: #35342f;
+  --primitive-charcoal-900: #242321;
+  --primitive-charcoal-800: #302e2a;
+  --primitive-rose-500: #c88f8b;
+  --primitive-rose-700: #a75f67;
+  --primitive-sage-500: #8fa58a;
+  --primitive-red-600: #a84d4d;
+  --primitive-white: #ffffff;
+  --primitive-space-1: 4px;
+  --primitive-space-2: 8px;
+  --primitive-space-3: 12px;
+  --primitive-space-4: 16px;
+  --primitive-space-5: 20px;
+  --primitive-space-6: 24px;
+  --primitive-space-8: 32px;
+  --primitive-radius-sm: 8px;
+  --primitive-radius-md: 11px;
+  --primitive-radius-lg: 16px;
+  --primitive-radius-pill: 999px;
+  --primitive-font-xs: 10px;
+  --primitive-font-sm: 12px;
+  --primitive-font-md: 14px;
+  --primitive-font-lg: 20px;
+  --primitive-shadow-card: 0 5px 20px rgb(53 52 47 / 9%);
+}
+
+/* Level 2 — Semantic Tokens: roles used by the interface */
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+  --ds-color-primary: var(--primitive-rose-500);
+  --ds-color-danger: var(--primitive-red-600);
+  --ds-color-success: var(--primitive-sage-500);
+  --ds-bg-page: var(--primitive-cream-100);
+  --ds-bg-surface: var(--primitive-cream-50);
+  --ds-bg-subtle: var(--primitive-cream-200);
+  --ds-text-primary: var(--primitive-charcoal-700);
+  --ds-text-secondary: var(--primitive-stone-500);
+  --ds-border: var(--primitive-cream-300);
+  --ds-focus-ring: var(--primitive-rose-500);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --ds-color-primary: #d7a3a0;
+  --ds-color-danger: #e08a82;
+  --ds-color-success: #a8b8a8;
+  --ds-bg-page: var(--primitive-charcoal-900);
+  --ds-bg-surface: var(--primitive-charcoal-800);
+  --ds-bg-subtle: #38352f;
+  --ds-text-primary: #f0ece5;
+  --ds-text-secondary: #b1aaa0;
+  --ds-border: #514b43;
+  --ds-focus-ring: #d7a3a0;
+  /* Dark-theme component tokens: keep controls readable on dark surfaces */
+  --ds-button-primary-bg: var(--ds-color-primary);
+  --ds-button-primary-text: var(--primitive-charcoal-900);
+  --ds-button-secondary-bg: var(--primitive-charcoal-800);
+  --ds-button-secondary-border: var(--ds-border);
+  --ds-button-danger-bg: var(--ds-color-danger);
+  --ds-input-bg: var(--primitive-charcoal-800);
+  --ds-input-border: var(--ds-border);
+  --ds-card-bg: var(--primitive-charcoal-800);
+  --ds-card-border: var(--ds-border);
+}
+
+/* Level 3 — Component Tokens: component-specific aliases */
+:root {
+  --ds-button-primary-bg: var(--ds-color-primary);
+  --ds-button-primary-text: var(--primitive-white);
+  --ds-button-secondary-bg: var(--ds-bg-surface);
+  --ds-button-secondary-border: var(--ds-border);
+  --ds-button-danger-bg: var(--ds-color-danger);
+  --ds-button-radius: var(--primitive-radius-pill);
+  --ds-input-bg: var(--ds-bg-surface);
+  --ds-input-border: var(--ds-border);
+  --ds-input-focus: var(--ds-focus-ring);
+  --ds-input-error: var(--ds-color-danger);
+  --ds-card-bg: var(--ds-bg-surface);
+  --ds-card-border: var(--ds-border);
+  --ds-card-radius: var(--primitive-radius-md);
+  --ds-card-shadow: var(--primitive-shadow-card);
+}
+
+/* Legacy visual values normalized as primitive tokens for existing ARTBOARD components. */
+:root {
+  --primitive-legacy-color-1: #242321;
+  --primitive-legacy-color-2: #302e2a;
+  --primitive-legacy-color-3: #35342f;
+  --primitive-legacy-color-4: #38352f;
+  --primitive-legacy-color-5: #45413b;
+  --primitive-legacy-color-6: #483033;
+  --primitive-legacy-color-7: #514b43;
+  --primitive-legacy-color-8: #5a5147;
+  --primitive-legacy-color-9: #627b62;
+  --primitive-legacy-color-10: #70444a;
+  --primitive-legacy-color-11: #706b63;
+  --primitive-legacy-color-12: #71695f;
+  --primitive-legacy-color-13: #827c73;
+  --primitive-legacy-color-14: #8fa58a;
+  --primitive-legacy-color-15: #a39a90;
+  --primitive-legacy-color-16: #a75f67;
+  --primitive-legacy-color-17: #a84d4d;
+  --primitive-legacy-color-18: #a8b8a8;
+  --primitive-legacy-color-19: #a96f6b;
+  --primitive-legacy-color-20: #b1aaa0;
+  --primitive-legacy-color-21: #b45f5f;
+  --primitive-legacy-color-22: #b86d62;
+  --primitive-legacy-color-23: #c2bbb1;
+  --primitive-legacy-color-24: #c88f8b;
+  --primitive-legacy-color-25: #c8b9ac;
+  --primitive-legacy-color-26: #d0c7bc;
+  --primitive-legacy-color-27: #d4c7ba;
+  --primitive-legacy-color-28: #d7a3a0;
+  --primitive-legacy-color-29: #dfd5ca;
+  --primitive-legacy-color-30: #e0d8ce;
+  --primitive-legacy-color-31: #e7c7c5;
+  --primitive-legacy-color-32: #e8e1d8;
+  --primitive-legacy-color-33: #f0b2b5;
+  --primitive-legacy-color-34: #f0ebe3;
+  --primitive-legacy-color-35: #f0ece5;
+  --primitive-legacy-color-36: #f7e8e6;
+  --primitive-legacy-color-37: #f8f5ef;
+  --primitive-legacy-color-38: #fff;
+  --primitive-legacy-color-39: #fffaf5;
+  --primitive-legacy-color-40: #fffdfa;
+  --primitive-legacy-alpha-1: rgb(0 0 0 / 12%);
+  --primitive-legacy-alpha-2: rgb(0 0 0 / 65%);
+  --primitive-legacy-alpha-3: rgb(143 165 138 / 14%);
+  --primitive-legacy-alpha-4: rgb(200 143 139 / 13%);
+  --primitive-legacy-alpha-5: rgb(248 245 239 / 92%);
+  --primitive-legacy-alpha-6: rgb(255 255 255 / 28%);
+  --primitive-legacy-alpha-7: rgb(255 255 255 / 3%);
+  --primitive-legacy-alpha-8: rgb(255 255 255 / 34%);
+  --primitive-legacy-alpha-9: rgb(255 255 255 / 35%);
+  --primitive-legacy-alpha-10: rgb(255 255 255 / 45%);
+  --primitive-legacy-alpha-11: rgb(255 255 255 / 75%);
+  --primitive-legacy-alpha-12: rgb(35 31 29 / 64%);
+  --primitive-legacy-alpha-13: rgb(35 31 29 / 8%);
+  --primitive-legacy-alpha-14: rgb(40 36 33 / 54%);
+  --primitive-legacy-alpha-15: rgb(43 36 30 / 22%);
+  --primitive-legacy-alpha-16: rgb(53 52 47 / 10%);
+  --primitive-legacy-alpha-17: rgb(53 52 47 / 3%);
+  --primitive-legacy-alpha-18: rgb(53 52 47 / 8%);
+  --primitive-legacy-alpha-19: rgb(53 52 47 / 9%);
+}

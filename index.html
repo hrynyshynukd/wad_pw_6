@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8f5ef">
+  <meta name="description" content="ARTBOARD — добірка ніжних абстрактних візуальних робіт.">
+  <title>ARTBOARD | Visual art gallery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#gallery" aria-label="ARTBOARD — до галереї">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">ARTBOARD</span>
+    </a>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Увімкнути темну тему">
+      <svg class="theme-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M20.2 15.1A8.2 8.2 0 0 1 8.9 3.8 8.4 8.4 0 1 0 20.2 15.1Z"></path>
+      </svg>
+      <span class="theme-toggle-label">Тема</span>
+    </button>
+
+    <nav class="main-nav" id="main-nav" aria-label="Головна навігація">
+      <a class="nav-link is-active" href="#gallery" data-route="gallery">Галерея</a>
+      <a class="nav-link" href="#about" data-route="about">Про проєкт</a>
+      <a class="nav-link" href="#feedback" data-route="feedback">Відгуки</a>
+      <a class="nav-link" href="#ui-kit" data-route="ui-kit">UI-Kit</a>
+    </nav>
+    <div class="session-monitor" aria-label="Час перебування на сайті">
+      <span class="session-indicator" aria-hidden="true"></span>
+      <span class="session-label">Час на сайті</span>
+      <time id="session-timer">00:00:00</time>
+    </div>
+  </header>
+
+  <main>
+    <section class="gallery-section page-section" id="gallery" data-page="gallery" aria-label="Галерея цифрового мистецтва">
+      <div class="state-toolbar" aria-label="Панель керування станами галереї">
+        <div class="state-toolbar-copy"><span class="eyebrow">ARTBOARD / SCREEN STATES</span><strong>Перевірка станів екрана</strong></div>
+        <div class="state-switcher" role="group" aria-label="Вибір стану екрана">
+          <button class="state-switch-button is-active" type="button" data-show-state="content">Дані</button>
+          <button class="state-switch-button" type="button" data-show-state="loading">Завантаження</button>
+          <button class="state-switch-button" type="button" data-show-state="empty">Порожній</button>
+          <button class="state-switch-button" type="button" data-show-state="error">Помилка</button>
+        </div>
+      </div>
+      <div class="gallery-tools" id="gallery-tools">
+        <label class="gallery-search-label" for="artwork-search">Пошук робіт</label>
+        <input class="gallery-search" id="artwork-search" type="search" placeholder="Введіть назву роботи…" autocomplete="off">
+        <button class="refresh-button" id="refresh-gallery" type="button">Оновити ↻</button>
+      </div>
+      <div class="screen-state" data-state="loading" hidden aria-live="polite">
+        <div class="skeleton-grid" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        <p>Завантажуємо роботи…</p>
+      </div>
+      <div class="screen-state" data-state="content">
+        <div class="gallery" id="gallery-grid"></div>
+        <div class="loading-sentinel" id="loading-sentinel" aria-hidden="true"></div>
+        <p class="sr-only" id="gallery-status" aria-live="polite"></p>
+      </div>
+      <div class="screen-state empty-state" data-state="empty" hidden>
+        <svg viewBox="0 0 64 64" role="img" aria-label="Порожня галерея"><rect x="8" y="12" width="48" height="40" rx="7"/><circle cx="23" cy="27" r="5"/><path d="m12 46 14-13 9 8 7-7 10 12"/></svg>
+        <h2>Нічого не знайдено</h2><p>Спробуйте змінити пошуковий запит або поверніться до всієї колекції.</p>
+        <button class="state-action-button" id="reset-gallery" type="button">Показати всі роботи</button>
+      </div>
+      <div class="screen-state error-state" data-state="error" hidden role="alert">
+        <svg viewBox="0 0 64 64" role="img" aria-label="Помилка"><circle cx="32" cy="32" r="23"/><path d="M32 19v16m0 9h.01"/></svg>
+        <h2>Не вдалося завантажити роботи</h2><p>Сталася помилка під час отримання даних. Код: DEMO-503.</p>
+        <button class="state-action-button" id="retry-gallery" type="button">Повторити спробу</button>
+      </div>
+    </section>
+
+    <section class="about-section page-section is-hidden" id="about" data-page="about" aria-labelledby="about-heading">
+      <div class="about-content">
+        <p class="eyebrow">ARTBOARD / ABOUT</p>
+        <h1 id="about-heading">Простір для візуального натхнення</h1>
+        <p>ARTBOARD — це невелика колекція абстрактних квіткових композицій, у якій поєднуються м’які форми, розсіяне світло та ніжні кольори.</p>
+        <p>Проєкт створений як мінімалістична галерея: зображення можна переглядати у великому форматі, знайомитися з описами та взаємодіяти з окремими роботами.</p>
+        <div class="about-facts">
+          <span>10 авторських візуальних добірок</span>
+          <span>Мінімалістичний інтерфейс</span>
+          <span>Світла та темна теми</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="ui-kit-section page-section is-hidden" id="ui-kit" data-page="ui-kit" aria-labelledby="ui-kit-heading">
+      <div class="ui-kit-heading"><p class="eyebrow">ARTBOARD / DESIGN SYSTEM</p><h1 id="ui-kit-heading">UI-Kit та дизайн-система</h1><p>Єдині правила оформлення компонентів, їхніх станів і кольорових тем.</p></div>
+      <section class="kit-panel" aria-labelledby="kit-buttons-heading"><h2 id="kit-buttons-heading">Кнопки</h2><p class="kit-description">Primary, Secondary та Danger — базові типи кнопок.</p>
+        <div class="kit-component-grid">
+          <div class="kit-sample"><span class="kit-label">Primary</span><button class="kit-button kit-primary" type="button">Основна дія</button><span class="kit-state-note">Default · Hover · Focus · Disabled</span><button class="kit-button kit-primary" type="button" disabled>Недоступна</button></div>
+          <div class="kit-sample"><span class="kit-label">Secondary</span><button class="kit-button kit-secondary" type="button">Додаткова дія</button><span class="kit-state-note">Default · Hover · Focus · Disabled</span><button class="kit-button kit-secondary" type="button" disabled>Недоступна</button></div>
+          <div class="kit-sample"><span class="kit-label">Danger</span><button class="kit-button kit-danger" type="button">Видалити</button><span class="kit-state-note">Default · Hover · Focus · Disabled</span><button class="kit-button kit-danger" type="button" disabled>Недоступна</button></div>
+        </div>
+      </section>
+      <section class="kit-panel" aria-labelledby="kit-fields-heading"><h2 id="kit-fields-heading">Поля введення</h2><div class="kit-fields-grid">
+        <div class="kit-field"><label for="kit-name">Назва роботи</label><input id="kit-name" type="text" placeholder="Введіть назву"></div>
+        <div class="kit-field"><label for="kit-email">Email — стан Error</label><input id="kit-email" type="email" value="неправильна адреса" aria-invalid="true"><small class="kit-error-message">Введіть коректну адресу електронної пошти.</small></div>
+        <div class="kit-field"><label for="kit-disabled">Disabled</label><input id="kit-disabled" type="text" placeholder="Недоступне поле" disabled></div>
+      </div></section>
+      <section class="kit-panel" aria-labelledby="kit-card-heading"><h2 id="kit-card-heading">Картка контенту</h2>
+        <div class="kit-dialog-preview" aria-label="Приклад відкритої картки роботи Blush in Motion">
+          <div class="dialog-layout">
+            <div class="dialog-artwork"><img src="images/image_4.webp" alt="Абстрактна квіткова композиція Blush in Motion"></div>
+            <aside class="dialog-info">
+              <p class="eyebrow">ARTBOARD / VISUAL STUDY</p>
+              <h3>Blush in Motion</h3>
+              <p class="dialog-description">Теплі персикові й рожеві тони нагадують фрагмент квітки, знятий крізь м’яке світло.</p>
+              <div class="tag-list" aria-label="Теги роботи"><span class="tag">Blush</span><span class="tag">Texture</span><span class="tag">Floral mood</span></div>
+              <div class="like-button kit-preview-like" aria-label="Приклад кнопки вподобання">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.9a5.4 5.4 0 0 0-7.6 0L12 6.1l-1.2-1.2a5.4 5.4 0 0 0-7.6 7.6l1.2 1.2L12 21l7.6-7.3 1.2-1.2a5.4 5.4 0 0 0 0-7.6Z"></path></svg>
+                <span>Подобається</span><span class="like-count">0</span>
+              </div>
+              <p class="dialog-index">ARTWORK 04 / 10</p>
+            </aside>
+          </div>
+        </div>
+        <p class="kit-description">Приклад відкритої картки повторює пропорції, композицію та оформлення реального перегляду роботи в галереї.</p>
+      </section>
+      <div class="kit-theme-note"><strong>Теми оформлення</strong><p>Перемикач у верхній частині сторінки змінює семантичні токени. Структура та класи компонентів залишаються незмінними.</p></div>
+    </section>
+
+    <section class="feedback-section page-section is-hidden" id="feedback" data-page="feedback" aria-labelledby="feedback-heading">
+      <div class="feedback-copy">
+        <p class="eyebrow">ARTBOARD / FEEDBACK</p>
+        <h2 id="feedback-heading">Поділися враженнями</h2>
+        <p>Кілька слів про галерею — і твій відгук з’явиться нижче.</p>
+      </div>
+
+      <form class="feedback-form" id="feedback-form" novalidate>
+        <div class="form-field">
+          <label for="feedback-name">Твоє ім’я</label>
+          <input id="feedback-name" name="name" type="text" autocomplete="name" minlength="2" maxlength="40" required placeholder="Наприклад, Марія">
+          <small class="field-error" id="name-error"></small>
+        </div>
+        <div class="form-field">
+          <label for="feedback-message">Відгук</label>
+          <textarea id="feedback-message" name="message" rows="3" minlength="5" maxlength="400" required placeholder="Що тобі сподобалося?"></textarea>
+          <div class="field-meta">
+            <small class="field-error" id="message-error"></small>
+            <small class="character-count" id="character-count">0 / 400</small>
+          </div>
+        </div>
+        <button class="submit-button" type="submit">Надіслати відгук <span aria-hidden="true">↗</span></button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="feedback-list" id="feedback-list" aria-live="polite" aria-label="Опубліковані відгуки"></div>
+    </section>
+  </main>
+
+  <button class="back-to-top" id="back-to-top" type="button" aria-label="Повернутися нагору">↑</button>
+
+  <footer class="site-footer">
+    <span>ARTBOARD</span>
+    <span class="footer-note">A little space for visual inspiration</span>
+    <span class="connection-status" id="connection-status" aria-live="polite">Перевірка з’єднання…</span>
+  </footer>
+
+  <dialog class="art-dialog" id="art-dialog" aria-label="Перегляд роботи">
+    <button class="dialog-close" id="dialog-close" type="button" aria-label="Закрити перегляд">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18"></path>
+      </svg>
+    </button>
+    <div class="dialog-layout">
+      <div class="dialog-artwork">
+        <img id="dialog-image" src="" alt="">
+      </div>
+      <aside class="dialog-info">
+        <p class="eyebrow">ARTBOARD / VISUAL STUDY</p>
+        <h1 id="dialog-title">Soft Bloom</h1>
+        <p class="dialog-description" id="dialog-description">
+          М'які форми, розсіяне світло та пастельні відтінки створюють спокійну абстрактну композицію.
+        </p>
+        <div class="tag-list" id="dialog-tags" aria-label="Теги роботи"></div>
+        <button class="like-button" id="like-button" type="button" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.9a5.4 5.4 0 0 0-7.6 0L12 6.1l-1.2-1.2a5.4 5.4 0 0 0-7.6 7.6l1.2 1.2L12 21l7.6-7.3 1.2-1.2a5.4 5.4 0 0 0 0-7.6Z"></path></svg>
+          <span id="like-label">Подобається</span>
+          <span class="like-count" id="like-count">0</span>
+        </button>
+        <p class="dialog-index" id="dialog-index"></p>
+      </aside>
+    </div>
+  </dialog>
+</body>
+</html>
